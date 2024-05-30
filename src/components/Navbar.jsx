@@ -23,7 +23,7 @@ const Navbar = () => {
             </div>
             {/* Menu Button */}
             <button
-              className="text-blue-500 hover:text-white md:hidden"
+              className="text-white hover:text-white md:hidden"
               onClick={toggleSidebar}
               id="open-sidebar"
             >
@@ -51,16 +51,16 @@ const Navbar = () => {
             </button>
             {/* Navbar Links */}
             <div className="hidden md:flex space-x-4">
-              <a href="/" className="text-xl font-bold hover:text-blue-950" style={{color: '#3074e4'}}>
+              <a href="/" className="text-xl font-bold hover:text-blue-950" style={{color: '#9ed0e6'}}>
                 Home
               </a>
-              <a href="/services" className="text-xl font-bold hover:text-blue-950" style={{color: '#3074e4'}}>
+              <a href="/services" className="text-xl font-bold hover:text-blue-950" style={{color: '#9ed0e6'}}>
                 Gallery
               </a>
-              <a href="/contact" className="text-xl font-bold hover:text-blue-950" style={{color: '#3074e4'}}>
+              <a href="/contact" className="text-xl font-bold hover:text-blue-950" style={{color: '#9ed0e6'}}>
                 Contact
               </a>
-              <a href="/about" className="text-xl font-bold hover:text-blue-950" style={{color: '#3074e4'}}>
+              <a href="/about" className="text-xl font-bold hover:text-blue-950" style={{color: '#9ed0e6'}}>
                 About Us
               </a>
             </div>
