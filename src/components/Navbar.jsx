@@ -1,8 +1,5 @@
-// Inside the Navbar component in Navbar.jsx
-
 import React, { useState } from 'react';
-import logo from '../assets/images/logo.png';
-import { NavLink } from 'react-router-dom';
+import logo from '../assets/a.png';
 
 const Navbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -17,12 +14,12 @@ const Navbar = () => {
         <div className="container mx-auto">
           <div className="flex justify-between items-center py-4 px-2">
             <div className="flex-shrink-0">
-              <NavLink to="/">
+              <a href="/">
                 <input type="file" accept="image/*" className="hidden" id="logoInput" />
                 <label htmlFor="logoInput">
-                  <img src={logo} alt="logo" className="w-48 h-26" />
+                  <img src={logo} alt="logo" className="w-[80px] h-[80px]" />
                 </label>
-              </NavLink>
+              </a>
             </div>
             {/* Menu Button */}
             <button
@@ -54,63 +51,62 @@ const Navbar = () => {
             </button>
             {/* Navbar Links */}
             <div className="hidden md:flex space-x-4">
-              <NavLink to="/" className="text-xl font-bold hover:text-blue-950" style={{color: '#3074e4'}}>
+              <a href="/" className="text-xl font-bold hover:text-blue-950" style={{color: '#3074e4'}}>
                 Home
-              </NavLink>
-              <NavLink to="/services" className="text-xl font-bold hover:text-blue-950" style={{color: '#3074e4'}}>
+              </a>
+              <a href="/services" className="text-xl font-bold hover:text-blue-950" style={{color: '#3074e4'}}>
                 Gallery
-              </NavLink>
-              <NavLink to="/contact" className="text-xl font-bold hover:text-blue-950" style={{color: '#3074e4'}}>
+              </a>
+              <a href="/contact" className="text-xl font-bold hover:text-blue-950" style={{color: '#3074e4'}}>
                 Contact
-              </NavLink>
-              <NavLink to="/about" className="text-xl font-bold hover:text-blue-950" style={{color: '#3074e4'}}>
+              </a>
+              <a href="/about" className="text-xl font-bold hover:text-blue-950" style={{color: '#3074e4'}}>
                 About Us
-              </NavLink>
+              </a>
             </div>
-            
           </div>
           
-      {/* Sidebar */}
-      <div
-        className={`absolute text-white text-center w-screen h-screen overflow-y-auto transition-transform ${
-          isSidebarOpen ? '' : 'transform -translate-x-full'
-        } ease-in-out duration-300 z-20 max-h-screen md:hidden`}
-        id="sidebar"
-        style={{ backgroundColor: '#00B4D8' }}
-      >
-        <div className="p-4">
-          <ul className="mt-2 divide-y divide-white">
-            <li className="py-2">
-              <a href="/" className="block text-xl hover:text-blue-950 transition-all duration-300 ease-in-out">
-                <span className="relative">
-                  Home
-                </span>
-              </a>
-            </li>
-            <li className="py-2">
-              <a href="/about" className="block text-xl hover:text-blue-950 transition-all duration-300 ease-in-out">
-                <span className="relative">
-                  About
-                </span>
-              </a>
-            </li>
-            <li className="py-2">
-              <a href="/services" className="block text-xl hover:text-blue-950 transition-all duration-300 ease-in-out">
-                <span className="relative">
-                  Services
-                </span>
-              </a>
-            </li>
-            <li className="py-2">
-              <a href="/contact" className="block text-xl hover:text-blue-950 transition-all duration-300 ease-in-out">
-                <span className="relative">
-                  Contact
-                </span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+          {/* Sidebar */}
+          <div
+            className={`absolute text-white text-center w-screen h-screen overflow-y-auto transition-transform ${
+              isSidebarOpen ? '' : 'transform -translate-x-full'
+            } ease-in-out duration-300 z-20 max-h-screen md:hidden`}
+            id="sidebar"
+            style={{ backgroundColor: '#00B4D8' }}
+          >
+            <div className="p-4">
+              <ul className="mt-2 divide-y divide-white">
+                <li className="py-2">
+                  <a href="/" className="block text-xl hover:text-blue-950 transition-all duration-300 ease-in-out">
+                    <span className="relative">
+                      Home
+                    </span>
+                  </a>
+                </li>
+                <li className="py-2">
+                  <a href="/about" className="block text-xl hover:text-blue-950 transition-all duration-300 ease-in-out">
+                    <span className="relative">
+                      About
+                    </span>
+                  </a>
+                </li>
+                <li className="py-2">
+                  <a href="/services" className="block text-xl hover:text-blue-950 transition-all duration-300 ease-in-out">
+                    <span className="relative">
+                      Services
+                    </span>
+                  </a>
+                </li>
+                <li className="py-2">
+                  <a href="/contact" className="block text-xl hover:text-blue-950 transition-all duration-300 ease-in-out">
+                    <span className="relative">
+                      Contact
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
