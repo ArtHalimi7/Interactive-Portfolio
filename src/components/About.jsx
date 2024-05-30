@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stage, Sprite, useTick } from '@inlet/react-pixi';
-import sprite from '../assets/sprite.jpg';
+import img from '../assets/img.jpg';
 
 const RotatingSprite = () => {
   const [rotation, setRotation] = React.useState(0);
@@ -11,7 +11,7 @@ const RotatingSprite = () => {
 
   return (
     <Sprite
-      image={sprite}
+      image={img}
       anchor={0.5}
       x={150}
       y={150}
