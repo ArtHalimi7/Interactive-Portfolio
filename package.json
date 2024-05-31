@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@inlet/react-pixi": "^6.8.0",
-    "pixi.js": "^6.5.8",
+    "pixi.js": "^6.5.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",

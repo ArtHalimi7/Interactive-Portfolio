@@ -9,8 +9,16 @@ function Home() {
         Your browser does not support the video tag.
       </video>
       <div className="relative z-10">
-        <h1 className="text-[200px] font-bold mb-4 text-[#9ed0e6] text-center hero" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', fontSize: '180px', fontWeight: 'bold', alignItems: 'center', transition: '0.7s', color: '#9ed0e6' }} onMouseOver={(e) => { e.target.style.color = 'transparent'; e.target.style.WebkitTextStroke = '2px white'; }} onMouseOut={(e) => { e.target.style.color = 'white'; e.target.style.WebkitTextStroke = 'none'; }}>
+        <h1 className="text-5xl md:text-[1400px] lg:text-7xl xl:text-8xl font-bold mb-4 text-[#9ed0e6] text-center hero" 
+        style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', 
+        fontWeight: 'bold', alignItems: 'center', transition: '0.7s', color: '#9ed0e6' }} 
+        onMouseOver={(e) => 
+        { e.target.style.color = 'transparent'; e.target.style.WebkitTextStroke = '2px white'; }} 
+        onMouseOut={(e) => 
+        { e.target.style.color = 'white'; e.target.style.WebkitTextStroke = 'none'; }}>
+
           Welcome to My Portfolio
+          
         </h1>
       </div>
     </section>
