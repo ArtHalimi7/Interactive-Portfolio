@@ -57,11 +57,16 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="min-h-screen flex flex-col items-center justify-center bg-white py-8">
+    <section id="about" className="min-h-screen flex flex-col items-center justify-center bg-transparent backdrop-blur-md	rounded-3xl py-8 relative">
+      {/* Add a relative positioning to the container */}
       <h2 className="text-3xl font-bold mb-4">About Me</h2>
       <p className="mb-4">This is a description about me.</p>
       {showPixi && (
-        <div ref={pixiContainer} className="w-full h-full">
+        <div
+          ref={pixiContainer}
+          className="w-full h-full absolute top-0 left-0"
+          style={{ zIndex: 10 }} // Set a higher z-index
+        >
           {/* PixiJS canvas will be appended here */}
         </div>
       )}

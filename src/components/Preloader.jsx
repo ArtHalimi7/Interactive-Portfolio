@@ -2,8 +2,8 @@ import React from 'react';
 
 function Preloader() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white">
-      <h1 className="text-2xl font-bold">Loading...</h1>
+    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black z-50">
+      <h1 className="text-2xl text-white font-bold">Loading...</h1>
     </div>
   );
 }
