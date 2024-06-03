@@ -57,22 +57,41 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="min-h-screen flex flex-col items-center justify-center bg-transparent backdrop-blur-md	rounded-3xl py-8 relative">
-      {/* Add a relative positioning to the container */}
-      <h2 className="text-3xl font-bold mb-4">About Me</h2>
-      <p className="mb-4">This is a description about me.</p>
+    <section 
+      id="about" 
+      className="relative flex flex-col items-center justify-center bg-transparent backdrop-blur-md rounded-3xl py-8" 
+      style={{ minHeight: '600px', height: '600px' }}
+    >
+      <h2 
+        className="text-5xl md:text-7xl lg:text-8xl xl:text-8xl font-bold mb-4 text-[#9ed0e6] text-center" 
+        style={{ position: 'absolute', top: '10%', left: '55%', transform: 'translate(-50%, -50%)', 
+        fontWeight: 'bold', alignItems: 'center', transition: '0.7s', color: '#9ed0e6' }} 
+        onMouseOver={(e) => 
+        { e.target.style.color = 'transparent'; e.target.style.WebkitTextStroke = '2px white'; }} 
+        onMouseOut={(e) => 
+        { e.target.style.color = '#9ed0e6'; e.target.style.WebkitTextStroke = 'none'; }}
+      >
+        About Me
+      </h2>
+      <p 
+        className="text-2xl mt-24 ml-[230px]" 
+        style={{ width: '500px', color: '#ffffff', fontWeight: 'bold' }}
+      >
+        I'm Art, <br />
+        a passionate React developer currently working at Starlabs based on Prishtina. <br /> <br />
+        I'm also pursuing my degree in Computer Science and Engineering at UBT. <br /> <br />
+        I enjoy creating interactive web applications and constantly strive to enhance my skills and knowledge in the field.
+
+      </p>
       {showPixi && (
         <div
           ref={pixiContainer}
-          className="w-full h-full absolute top-0 left-0"
+          className="absolute top-0 left-0 w-full h-full"
           style={{ zIndex: 10 }} // Set a higher z-index
         >
           {/* PixiJS canvas will be appended here */}
         </div>
       )}
-      <button onClick={togglePixi} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
-        Toggle Pixi.js Rendering
-      </button>
     </section>
   );
 };
