@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as PIXI from 'pixi.js';
+import planet2 from '../assets/object.jpg'; // Path to the second planet image
 
 const About = () => {
   const [showPixi, setShowPixi] = useState(true);
@@ -13,24 +14,28 @@ const About = () => {
         pixiApp.current = new PIXI.Application({
           width: 800,
           height: 600,
-          backgroundColor: 0x1099bb,
+          backgroundAlpha: 0.7,
         });
         pixiContainer.current.appendChild(pixiApp.current.view);
 
         // Create a new loader instance
         const loader = new PIXI.Loader();
 
-        // Load a sprite and add it to the stage
-        loader.add('bunny', 'https://pixijs.io/examples/examples/assets/bunny.png').load((loader, resources) => {
-          const bunny = new PIXI.Sprite(resources.bunny.texture);
-          bunny.anchor.set(0.5);
-          bunny.x = pixiApp.current.screen.width / 2;
-          bunny.y = pixiApp.current.screen.height / 2;
-          pixiApp.current.stage.addChild(bunny);
+        // Load planet image
+        loader.add('planet2', planet2);
 
-          // Add a simple animation
+        // Load image and add it to the stage
+        loader.load((loader, resources) => {
+          // Create second planet sprite
+          const planet2Sprite = new PIXI.Sprite(resources.planet2.texture);
+          planet2Sprite.anchor.set(0.5);
+          planet2Sprite.x = pixiApp.current.screen.width / 2;
+          planet2Sprite.y = pixiApp.current.screen.height / 2;
+          pixiApp.current.stage.addChild(planet2Sprite);
+
+          // Add a simple rotation animation to the planet
           pixiApp.current.ticker.add(() => {
-            bunny.rotation += 0.01;
+            planet2Sprite.rotation += 0.003;
           });
         });
 
@@ -62,6 +67,7 @@ const About = () => {
       className="relative flex flex-col items-center justify-center bg-transparent backdrop-blur-md rounded-3xl py-8" 
       style={{ minHeight: '600px', height: '600px' }}
     >
+      {/* Content */}
       <h2 
         className="text-5xl md:text-7xl lg:text-8xl xl:text-8xl font-bold mb-4 text-[#9ed0e6] text-center" 
         style={{ position: 'absolute', top: '10%', left: '55%', transform: 'translate(-50%, -50%)', 
@@ -81,8 +87,9 @@ const About = () => {
         a passionate React developer currently working at Starlabs based on Prishtina. <br /> <br />
         I'm also pursuing my degree in Computer Science and Engineering at UBT. <br /> <br />
         I enjoy creating interactive web applications and constantly strive to enhance my skills and knowledge in the field.
-
       </p>
+      
+      {/* PixiJS container */}
       {showPixi && (
         <div
           ref={pixiContainer}
