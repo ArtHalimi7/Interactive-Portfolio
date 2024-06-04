@@ -10,7 +10,7 @@ function Home() {
   };
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-transparent relative">
+    <section id='home' className="min-h-screen flex flex-col items-center justify-center bg-transparent relative">
       {/* Video background */}
       <div className="fixed inset-0 z-0">
         <video autoPlay loop muted className="object-cover w-full h-full">

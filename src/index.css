@@ -22,3 +22,25 @@
     position: relative;
     z-index: 10;
   }
+  .projects-container {
+    margin-top: 300px; /* Adjust margin as needed */
+    position: relative;
+  }
+  
+  .projects-title {
+    font-size: 6rem; /* Adjust font size as needed */
+    font-weight: bold;
+    color: #9ed0e6;
+    text-align: center;
+    position: absolute;
+    top: -28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.7s;
+    z-index: 9999; /* Ensure the title appears on top of everything */
+  }
+  
+  .projects-title:hover {
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+  }

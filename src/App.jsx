@@ -1,3 +1,4 @@
+import { BrowserRouter } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -16,9 +17,10 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  console.log("Loading:", loading);  // Add this line to check the loading state
+  console.log("Loading:", loading); 
 
   return (
+    <BrowserRouter>
     <div className="App">
       <Navbar />
       {loading ? (
@@ -32,6 +34,7 @@ function App() {
         </div>
       )}
     </div>
+    </BrowserRouter>
   );
 }
 
