@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as PIXI from 'pixi.js';
-import planet2 from '../assets/planet2.png';
+import planet2 from '../assets/ashowcase.png';
 
 const About = () => {
   const [showPixi, setShowPixi] = useState(true);

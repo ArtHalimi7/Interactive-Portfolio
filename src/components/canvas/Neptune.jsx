@@ -8,8 +8,8 @@ export default function Model(props) {
   const { actions } = useAnimations(animations, group);
 
   // Load the textures from the public/textures folder
-  const planetTexture = useTexture('/textures/Planeta_baseColor.jpeg');
-  const atmosphereTexture = useTexture('/textures/Atmosfera_normal.png');
+  const planetTexture = useTexture('/textures/maintexture.jpg');
+  const atmosphereTexture = useTexture('/textures/maintexture.jpg');
 
   // Apply the texture to the materials
   if (materials.Planeta) {

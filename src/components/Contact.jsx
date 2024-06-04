@@ -148,7 +148,7 @@ const Contact = () => {
           style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} // Align center horizontally and vertically
         >
           <Canvas className="w-full h-full">
-            <ambientLight intensity={1.5}/> {/* Increase ambient light intensity */}
+            <ambientLight intensity={3}/> {/* Increase ambient light intensity */}
             <OrbitControls enableZoom={false}/>
             <Suspense fallback={<Html>Loading...</Html>}>
               <Object />
