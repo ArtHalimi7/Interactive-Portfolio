@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as PIXI from 'pixi.js';
-import planet2 from '../assets/object.jpg'; // Path to the second planet image
+import planet2 from '../assets/planet2.jpg';
 
 const About = () => {
   const [showPixi, setShowPixi] = useState(true);
@@ -53,13 +53,6 @@ const About = () => {
     }
   }, [showPixi]);
 
-  const togglePixi = () => {
-    setShowPixi((prevShowPixi) => !prevShowPixi);
-    if (pixiApp.current) {
-      pixiApp.current.destroy(true, { children: true });
-      pixiApp.current = null;
-    }
-  };
 
   return (
     <section 
@@ -67,7 +60,6 @@ const About = () => {
       className="relative flex flex-col items-center justify-center bg-transparent backdrop-blur-md rounded-3xl py-8" 
       style={{ minHeight: '600px', height: '600px' }}
     >
-      {/* Content */}
       <h2 
         className="text-5xl md:text-7xl lg:text-8xl xl:text-8xl font-bold mb-4 text-[#9ed0e6] text-center" 
         style={{ position: 'absolute', top: '10%', left: '55%', transform: 'translate(-50%, -50%)', 
@@ -89,14 +81,12 @@ const About = () => {
         I enjoy creating interactive web applications and constantly strive to enhance my skills and knowledge in the field.
       </p>
       
-      {/* PixiJS container */}
       {showPixi && (
         <div
           ref={pixiContainer}
           className="absolute top-0 left-0 w-full h-full"
-          style={{ zIndex: 10 }} // Set a higher z-index
+          style={{ zIndex: 10 }} 
         >
-          {/* PixiJS canvas will be appended here */}
         </div>
       )}
     </section>

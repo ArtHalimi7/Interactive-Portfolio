@@ -16,9 +16,11 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  console.log("Loading:", loading);  // Add this line to check the loading state
+
   return (
     <div className="App">
-      <Navbar/>
+      <Navbar />
       {loading ? (
         <Preloader />
       ) : (

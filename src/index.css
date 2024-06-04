@@ -17,3 +17,8 @@
   .floating-button {
     animation: floating 3s ease-in-out infinite;
   }
+
+  .contact-container {
+    position: relative;
+    z-index: 10;
+  }
