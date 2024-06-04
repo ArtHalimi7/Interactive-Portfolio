@@ -6,6 +6,7 @@ import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Preloader from './components/Preloader';
+import Footer from "./components/Footer";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -31,6 +32,7 @@ function App() {
           <About />
           <Projects />
           <Contact />
+          <Footer/>
         </div>
       )}
     </div>
