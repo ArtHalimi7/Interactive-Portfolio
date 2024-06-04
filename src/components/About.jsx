@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as PIXI from 'pixi.js';
-import planet2 from '../assets/planet2.jpg';
+import planet2 from '../assets/planet2.png';
 
 const About = () => {
   const [showPixi, setShowPixi] = useState(true);
@@ -31,6 +31,14 @@ const About = () => {
           planet2Sprite.anchor.set(0.5);
           planet2Sprite.x = pixiApp.current.screen.width / 2;
           planet2Sprite.y = pixiApp.current.screen.height / 2;
+
+          // Calculate scaling factor to maintain aspect ratio
+          const scaleFactor = Math.min(
+            pixiApp.current.screen.width / planet2Sprite.texture.width,
+            pixiApp.current.screen.height / planet2Sprite.texture.height
+          );
+          planet2Sprite.scale.set(scaleFactor);
+
           pixiApp.current.stage.addChild(planet2Sprite);
 
           // Add a simple rotation animation to the planet
@@ -52,7 +60,6 @@ const About = () => {
       };
     }
   }, [showPixi]);
-
 
   return (
     <section 
