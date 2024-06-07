@@ -8,7 +8,7 @@ import { slideIn } from "../utils/motion";
 import StarsCanvas from "../components/canvas/Stars";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import Object from '../components/canvas/Neptune';
+import NeptuneObject from '../components/canvas/Neptune'; // Renamed import
 
 const Contact = () => {
   const formRef = useRef();
@@ -49,16 +49,16 @@ const Contact = () => {
     setLoading(true);
 
     emailjs.send(
-      'service_edxi3zr',
-      'template_ne9wh4b',
+      'service_z6586v8',
+      'template_uv3ugkm',
       {
         from_name: form.name,
         to_name: 'Art',
         from_email: form.email,
-        to_email: 'arthalimi989@gmail.com',
+        to_email: 'ah56066@ubt-uni.net',
         message: form.message,
       },
-      '-NWp731-hJ2KBhmcB'
+      'wHsamkgXBh4ubAuf5'
     ).then(() => {
       setLoading(false);
       setResponseMessage('Thank you for your message, I will get back to you as soon as possible.');
@@ -151,7 +151,7 @@ const Contact = () => {
             <ambientLight intensity={3}/> {/* Increase ambient light intensity */}
             <OrbitControls enableZoom={false}/>
             <Suspense fallback={<Html>Loading...</Html>}>
-              <Object />
+              <NeptuneObject /> {/* Updated component name */}
             </Suspense>
           </Canvas>
         </motion.div>
