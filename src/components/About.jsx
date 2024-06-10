@@ -14,7 +14,7 @@ const About = () => {
         pixiApp.current = new PIXI.Application({
           width: 800,
           height: 600,
-          backgroundAlpha: 0.7,
+          backgroundAlpha: 0,
         });
         pixiContainer.current.appendChild(pixiApp.current.view);
 
