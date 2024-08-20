@@ -143,6 +143,7 @@ const Contact = () => {
           className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px] z-20"
         />
       </div>
+      
     </div>
   );
 }
