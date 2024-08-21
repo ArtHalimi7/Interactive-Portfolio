@@ -1,70 +1,210 @@
-import React from 'react';
-import logo from '../assets/a.png'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link
+import logo from '../assets/a.png';
 
-const Footer = () => {
+// Modal Component
+const Modal = ({ isOpen, onClose, title, content }) => {
+  if (!isOpen) return null;
+
   return (
-    <footer className="relative z-50">
-      <div className="mx-auto w-full max-w-screen-xl backdrop-blur-xl p-4 py-6 lg:py-8">
-        <div className="md:flex md:justify-between">
-          <div className="mb-6 md:mb-0">
-          <a href="#" className="flex items-center">
-            <img src={logo} className="h-[100px] me-3" alt="Your Custom Logo" />
-                <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Art Halimi</span>
-            </a>
+    <div style={{
+      position: 'fixed',
+      inset: '0',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      zIndex: 2000 // Ensure the modal is on top
+    }}>
+      <div style={{
+        backgroundColor: 'white',
+        padding: '24px',
+        borderRadius: '8px',
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        maxWidth: '800px', // Increased width
+        width: '90%', // Full width with a max width
+        margin: '0 auto',
+        boxSizing: 'border-box' // Ensure padding is included in width
+      }}>
+        <h2 style={{
+          fontSize: '1.5rem',
+          fontWeight: '600',
+          marginBottom: '12px',
+          color: '#2d3748'
+        }}>{title}</h2>
+        <div style={{ marginBottom: '16px' }}>{content}</div>
+        <button 
+          onClick={onClose} 
+          style={{
+            padding: '8px 16px',
+            backgroundColor: '#3b82f6',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s'
+          }}
+          onMouseOver={e => e.currentTarget.style.backgroundColor = '#2563eb'}
+          onMouseOut={e => e.currentTarget.style.backgroundColor = '#3b82f6'}
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  );
+};
+
+// Footer Component
+const Footer = () => {
+  const [isPrivacyPolicyOpen, setPrivacyPolicyOpen] = useState(false);
+  const [isTermsOpen, setTermsOpen] = useState(false);
+
+  const openPrivacyPolicy = () => setPrivacyPolicyOpen(true);
+  const closePrivacyPolicy = () => setPrivacyPolicyOpen(false);
+
+  const openTerms = () => setTermsOpen(true);
+  const closeTerms = () => setTermsOpen(false);
+
+  return (
+    <footer style={{
+      position: 'relative',
+      zIndex: 50,
+      backgroundColor: 'rgba(0, 0, 0, 0.6)',
+      color: 'white',
+      backdropFilter: 'blur(10px)'
+    }}>
+      <div style={{
+        maxWidth: '1200px',
+        padding: '16px',
+        margin: '0 auto'
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px' }}>
+          <div style={{ marginBottom: '24px' }}>
+            <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
+              <img src={logo} style={{ height: '100px', marginRight: '12px' }} alt="Your Custom Logo" />
+              <span style={{ fontSize: '1.5rem', fontWeight: '600' }}>
+                Art Halimi
+              </span>
+            </Link>
           </div>
-          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}>
             <div>
-              <h2 className="mb-6 text-md font-semibold text-gray-900 uppercase dark:text-white">Follow Me</h2>
-              <ul className="font-medium">
-                <li className="mb-4 text-white dark:hover:text-[#9ed0e6]">
-                  <a href="#" className="hover:underline ">Github</a>
+              <h2 style={{
+                marginBottom: '24px',
+                fontSize: '0.875rem',
+                fontWeight: '600',
+                color: '#e5e7eb',
+                textTransform: 'uppercase'
+              }}>Follow Me</h2>
+              <ul style={{ fontSize: '0.875rem', fontWeight: '500' }}>
+                <li style={{ marginBottom: '16px' }}>
+                  <a href="https://github.com/ArtHalimi7" style={{ color: '#9ed0e6', textDecoration: 'none' }}>
+                    Github
+                  </a>
                 </li>
-                <li className='text-white dark:hover:text-[#9ed0e6]'>
-                  <a href="#" className="hover:underline">Discord</a>
+                <li>
+                  <a href="https://discord.com/users/926445891538264094" style={{ color: '#9ed0e6', textDecoration: 'none' }}>
+                    Discord
+                  </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-md font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4">
-                  <a href="#" className="hover:underline text-white dark:hover:text-[#9ed0e6]">Privacy Policy</a>
+              <h2 style={{
+                marginBottom: '24px',
+                fontSize: '0.875rem',
+                fontWeight: '600',
+                color: '#e5e7eb',
+                textTransform: 'uppercase'
+              }}>Legal</h2>
+              <ul style={{ color: '#d1d5db', fontSize: '0.875rem', fontWeight: '500' }}>
+                <li style={{ marginBottom: '16px' }}>
+                  <button 
+                    onClick={openPrivacyPolicy} 
+                    style={{ color: '#9ed0e6', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}
+                  >
+                    Privacy Policy
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline text-white dark:hover:text-[#9ed0e6]">Terms &amp; Conditions</a>
+                  <button 
+                    onClick={openTerms} 
+                    style={{ color: '#9ed0e6', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}
+                  >
+                    Terms &amp; Conditions
+                  </button>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <hr className="my-6 dark:border-[#9ed0e6] lg:my-8" />
-        <div className="sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm text-white sm:text-center dark:text-white">© 2023 <a href="#" className="hover:underline">Art Halimi™</a>. All Rights Reserved.
+        <hr style={{ margin: '24px 0', borderColor: '#4b5563' }} />
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span style={{ fontSize: '0.875rem' }}>
+            © 2024 <a href="#" style={{ color: '#9ed0e6', textDecoration: 'none' }}>Art Halimi™</a>. All Rights Reserved.
           </span>
-          <div className="flex mt-4 sm:justify-center sm:mt-0">
-            <a href="#" className="text-white dark:hover:text-[#9ed0e6]">
-              <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
-                <path fillRule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clipRule="evenodd"/>
+          <div style={{ display: 'flex', marginTop: '16px' }}>
+            <a href="https://www.linkedin.com/in/art-halimi-1653a828a/" style={{ color: '#9ed0e6', textDecoration: 'none' }}>
+              <svg style={{ width: '24px', height: '24px' }} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M22.23 0H1.77C.792 0 0 .792 0 1.77v20.46C0 23.208.792 24 1.77 24h20.46c.978 0 1.77-.792 1.77-1.77V1.77C24 .792 23.208 0 22.23 0zM7.22 20.455H4.76V9.1h2.46v11.355zm-1.23-12.84c-.796 0-1.44-.657-1.44-1.44s.644-1.44 1.44-1.44c.796 0 1.44.657 1.44 1.44s-.644 1.44-1.44 1.44zm14.09 12.84h-2.46v-5.607c0-1.336-.025-3.056-1.865-3.056-1.865 0-2.153 1.46-2.153 2.968v5.695h-2.46V9.1h2.36v1.546h.034c.328-.62 1.132-1.282 2.328-1.282 2.486 0 2.945 1.64 2.945 3.775v6.317z"/>
               </svg>
-              <span className="sr-only">Facebook page</span>
-            </a>
-            <a href="#" className="text-white dark:hover:text-[#9ed0e6] ms-5">
-              <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 21 16">
-                <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z"/>
-              </svg>
-              <span className="sr-only">Discord community</span>
-            </a>
-            <a href="#" className="text-white dark:hover:text-[#9ed0e6] ms-5">
-              <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 17">
-                <path fillRule="evenodd" d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z"/>
-              </svg>
-              <span className="sr-only">Twitter page</span>
+              <span style={{ visibility: 'hidden' }}>LinkedIn profile</span>
             </a>
           </div>
         </div>
       </div>
+
+      {/* Privacy Policy Modal */}
+      <Modal
+        isOpen={isPrivacyPolicyOpen}
+        onClose={closePrivacyPolicy}
+        title="Privacy Policy"
+        content={
+          <>
+            <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Information Collection</h2>
+            <p style={{ marginBottom: '16px', color: 'black' }}>
+              We may collect personal information that you provide directly to us, such as your name and email address. We also collect information automatically through cookies and similar technologies.
+            </p>
+            <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Use of Information</h2>
+            <p style={{ marginBottom: '16px', color: 'black' }}>
+              We use the information we collect to improve our website, respond to your requests, and communicate with you about our services.
+            </p>
+            <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Security</h2>
+            <p style={{ marginBottom: '16px', color: 'black' }}>
+              We implement reasonable security measures to protect your personal information from unauthorized access or disclosure.
+            </p>
+            <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Changes</h2>
+            <p style={{ color: 'black' }}>
+              We may update our privacy policy from time to time. We encourage you to review this policy periodically.
+            </p>
+          </>
+        }
+      />
+
+      {/* Terms & Conditions Modal */}
+      <Modal
+        isOpen={isTermsOpen}
+        onClose={closeTerms}
+        title="Terms & Conditions"
+        content={
+          <>
+            <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Acceptance of Terms</h2>
+            <p style={{ marginBottom: '16px', color: 'black' }}>
+              By using our website, you agree to comply with and be bound by these terms and conditions. If you do not agree, please do not use our site.
+            </p>
+            <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Limitations of Liability</h2>
+            <p style={{ marginBottom: '16px', color: 'black' }}>
+              We shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of our website.
+            </p>
+            <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Governing Law</h2>
+            <p style={{ color: 'black' }}>
+              These terms and conditions are governed by and construed in accordance with the laws of the jurisdiction in which we operate.
+            </p>
+          </>
+        }
+      />
     </footer>
   );
-}
+};
 
 export default Footer;

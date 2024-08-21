@@ -6,22 +6,23 @@ const ViewMoreButton = ({ expanded, onClick, text }) => {
   const app = useRef(null);
 
   useEffect(() => {
-    // Create PixiJS application
-    app.current = new PIXI.Application({ width: 150, height: 50, backgroundColor: 0x1099bb });
+    // Create PixiJS application with smaller width and height
+    app.current = new PIXI.Application({ width: 120, height: 40, backgroundColor: 0x1099bb });
     pixiContainer.current.appendChild(app.current.view);
 
-    // Create a simple button using PixiJS
+    // Create a smaller button using PixiJS
     const button = new PIXI.Graphics();
     button.beginFill(0x9ed0e6);
-    button.drawRect(0, 0, 150, 50);
+    button.drawRect(0, 0, 120, 40); // Reduced width and height
     button.endFill();
     button.interactive = true;
     button.buttonMode = true;
     button.on('pointerdown', onClick);
 
-    const buttonText = new PIXI.Text(expanded ? 'View Less' : 'View More', { fontSize: 24, fill: 0x000000, align: 'center' });
-    buttonText.x = 75 - buttonText.width / 2;
-    buttonText.y = 25 - buttonText.height / 2;
+    // Create a smaller button text
+    const buttonText = new PIXI.Text(expanded ? 'View Less' : 'View More', { fontSize: 18, fill: 0x000000, align: 'center' });
+    buttonText.x = 60 - buttonText.width / 2; // Adjusted for smaller button
+    buttonText.y = 20 - buttonText.height / 2;
 
     button.addChild(buttonText);
     app.current.stage.addChild(button);

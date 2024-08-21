@@ -28,10 +28,12 @@ const Slider2 = () => {
   };
 
   return (
-    <div className="relative mx-8" style={{ maxWidth: '1200px', marginLeft: '300px' }}>
+    <div className="relative mx-auto max-w-full px-4 sm:px-8 lg:px-12">
       <Slider {...settings}>
         <div className="relative">
-          <img src={header} alt="Slide 1" className="w-full h-auto object-cover slider-image" />
+          <a href={header} target="_blank" rel="noopener noreferrer">
+            <img src={header} alt="Slide 1" className="w-full h-auto object-cover slider-image" />
+          </a>
           <ViewMoreButton 
             expanded={expandedSlides[0]} 
             onClick={() => toggleExpand(0)} 
@@ -41,7 +43,9 @@ const Slider2 = () => {
           />
         </div>
         <div className="relative">
-          <img src={header4} alt="Slide 2" className="w-full h-auto object-cover slider-image" />
+          <a href={header4} target="_blank" rel="noopener noreferrer">
+            <img src={header4} alt="Slide 2" className="w-full h-auto object-cover slider-image" />
+          </a>
           <ViewMoreButton 
             expanded={expandedSlides[1]} 
             onClick={() => toggleExpand(1)} 
@@ -51,7 +55,9 @@ const Slider2 = () => {
           />
         </div>
         <div className="relative">
-          <img src={header3} alt="Slide 3" className="w-full h-auto object-cover slider-image" />
+          <a href={header3} target="_blank" rel="noopener noreferrer">
+            <img src={header3} alt="Slide 3" className="w-full h-auto object-cover slider-image" />
+          </a>
           <ViewMoreButton 
             expanded={expandedSlides[2]} 
             onClick={() => toggleExpand(2)} 
@@ -64,19 +70,33 @@ const Slider2 = () => {
 
       <style jsx>{`
         .slider-image {
-          max-height: 700px;
-          width: 1200px;
+          max-height: 800px; /* Increased size */
+          width: 100%;
           animation: fadeInOut 1s ease-in-out;
           box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+          transition: transform 0.3s ease-in-out;
         }
 
         .slider-image:hover {
           box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+          transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+        @media (max-width: 1024px) {
+          .slider-image {
+            max-height: 600px; /* Adjusted for smaller screens */
+          }
         }
 
         @media (max-width: 767px) {
           .slider-image {
-            max-height: 200px;
+            max-height: 400px;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .slider-image {
+            max-height: 300px;
           }
         }
 
