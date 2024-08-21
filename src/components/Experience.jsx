@@ -47,51 +47,43 @@ const ExperienceCard = ({ experience }) => (
 );
 
 const Experience = () => {
-  const scrollToNextSection = () => {
-    const nextSection = document.getElementById('about');
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <>
       <motion.div>
-        <p className="text-2xl mt-[200px] mx-auto" style={{ width: '300px', color: '#ffffff', fontWeight: 'bold' }}>
-          My achievements so far
-        </p>
-        <h2
-          className="text-5xl md:text-7xl lg:text-8xl xl:text-8xl font-bold mb-4 text-[#9ed0e6] text-center"
-          style={{
-            position: 'absolute',
-            top: '10%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            fontWeight: 'bold',
-            alignItems: 'center',
-            transition: '0.7s',
-            color: '#9ed0e6'
-          }}
-          onMouseOver={(e) => {
-            e.target.style.color = 'transparent';
-            e.target.style.WebkitTextStroke = '2px white';
-          }}
-          onMouseOut={(e) => {
-            e.target.style.color = '#9ed0e6';
-            e.target.style.WebkitTextStroke = 'none';
-          }}
-        >
-          Work Experience
-        </h2>
-      </motion.div>
+        <section id="experience" className="pt-[200px]">
+          <p className="text-2xl mt-0 mx-auto" style={{ width: '300px', color: '#ffffff', fontWeight: 'bold' }}>
+            My achievements so far
+          </p>
+          <h2
+            className="text-5xl md:text-7xl lg:text-8xl xl:text-8xl font-bold mb-4 text-[#9ed0e6] text-center"
+            style={{
+              position: 'relative',
+              fontWeight: 'bold',
+              alignItems: 'center',
+              transition: '0.7s',
+              color: '#9ed0e6'
+            }}
+            onMouseOver={(e) => {
+              e.target.style.color = 'transparent';
+              e.target.style.WebkitTextStroke = '2px white';
+            }}
+            onMouseOut={(e) => {
+              e.target.style.color = '#9ed0e6';
+              e.target.style.WebkitTextStroke = 'none';
+            }}
+          >
+            Work Experience
+          </h2>
+        </section>
 
-      <div className="mt-[50px] flex flex-col">
-        <VerticalTimeline>
-          {experiences.map((experience, index) => (
-            <ExperienceCard key={index} experience={experience} />
-          ))}
-        </VerticalTimeline>
-      </div>
+        <div className="mt-[50px] flex flex-col">
+          <VerticalTimeline>
+            {experiences.map((experience, index) => (
+              <ExperienceCard key={index} experience={experience} />
+            ))}
+          </VerticalTimeline>
+        </div>
+      </motion.div>
     </>
   );
 };
