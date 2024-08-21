@@ -71,23 +71,36 @@ const Footer = () => {
       zIndex: 50,
       backgroundColor: 'rgba(0, 0, 0, 0.6)',
       color: 'white',
-      backdropFilter: 'blur(10px)'
+      backdropFilter: 'blur(10px)',
+      padding: '16px 0',
     }}>
       <div style={{
         maxWidth: '1200px',
-        padding: '16px',
-        margin: '0 auto'
+        padding: '0 16px',
+        margin: '0 auto',
       }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px' }}>
+        <div style={{ 
+          display: 'flex', 
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+          marginBottom: '24px' 
+        }}>
           <div style={{ marginBottom: '24px' }}>
-            <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
-              <img src={logo} style={{ height: '100px', marginRight: '12px' }} alt="Your Custom Logo" />
+            <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit', justifyContent: 'center' }}>
+              <img src={logo} style={{ height: '80px', marginRight: '12px' }} alt="Your Custom Logo" />
               <span style={{ fontSize: '1.5rem', fontWeight: '600' }}>
                 Art Halimi
               </span>
             </Link>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '24px',
+            justifyItems: 'center',
+            textAlign: 'center'
+          }}>
             <div>
               <h2 style={{
                 marginBottom: '24px',
@@ -96,7 +109,7 @@ const Footer = () => {
                 color: '#e5e7eb',
                 textTransform: 'uppercase'
               }}>Follow Me</h2>
-              <ul style={{ fontSize: '0.875rem', fontWeight: '500' }}>
+              <ul style={{ fontSize: '0.875rem', fontWeight: '500', padding: '0', listStyle: 'none' }}>
                 <li style={{ marginBottom: '16px' }}>
                   <a href="https://github.com/ArtHalimi7" style={{ color: '#9ed0e6', textDecoration: 'none' }}>
                     Github
@@ -117,7 +130,7 @@ const Footer = () => {
                 color: '#e5e7eb',
                 textTransform: 'uppercase'
               }}>Legal</h2>
-              <ul style={{ color: '#d1d5db', fontSize: '0.875rem', fontWeight: '500' }}>
+              <ul style={{ color: '#d1d5db', fontSize: '0.875rem', fontWeight: '500', padding: '0', listStyle: 'none' }}>
                 <li style={{ marginBottom: '16px' }}>
                   <button 
                     onClick={openPrivacyPolicy} 
@@ -139,7 +152,12 @@ const Footer = () => {
           </div>
         </div>
         <hr style={{ margin: '24px 0', borderColor: '#4b5563' }} />
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ 
+          display: 'flex', 
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center'
+        }}>
           <span style={{ fontSize: '0.875rem' }}>
             © 2024 <a href="#" style={{ color: '#9ed0e6', textDecoration: 'none' }}>Art Halimi™</a>. All Rights Reserved.
           </span>
@@ -162,43 +180,39 @@ const Footer = () => {
         content={
           <>
             <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Information Collection</h2>
-            <p style={{ marginBottom: '16px', color: 'black' }}>
-              We may collect personal information that you provide directly to us, such as your name and email address. We also collect information automatically through cookies and similar technologies.
+            <p className='text-black'>
+              We collect information from you when you visit our website, register for an account, or interact with our services. This may include personal details, usage data, and preferences.
             </p>
             <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Use of Information</h2>
-            <p style={{ marginBottom: '16px', color: 'black' }}>
-              We use the information we collect to improve our website, respond to your requests, and communicate with you about our services.
+            <p className='text-black'>
+              The information we collect is used to provide and improve our services, communicate with you, and ensure the security of our website.
             </p>
-            <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Security</h2>
-            <p style={{ marginBottom: '16px', color: 'black' }}>
-              We implement reasonable security measures to protect your personal information from unauthorized access or disclosure.
-            </p>
-            <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Changes</h2>
-            <p style={{ color: 'black' }}>
-              We may update our privacy policy from time to time. We encourage you to review this policy periodically.
+            <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Data Security</h2>
+            <p className='text-black'>
+              We implement security measures to protect your information from unauthorized access, alteration, or destruction.
             </p>
           </>
         }
       />
 
-      {/* Terms & Conditions Modal */}
+      {/* Terms and Conditions Modal */}
       <Modal
         isOpen={isTermsOpen}
         onClose={closeTerms}
-        title="Terms & Conditions"
+        title="Terms and Conditions"
         content={
           <>
-            <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Acceptance of Terms</h2>
-            <p style={{ marginBottom: '16px', color: 'black' }}>
-              By using our website, you agree to comply with and be bound by these terms and conditions. If you do not agree, please do not use our site.
+            <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Terms of Use</h2>
+            <p className='text-black'>
+              By using our website, you agree to comply with our terms and conditions. You are responsible for your actions and interactions with our services.
             </p>
-            <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Limitations of Liability</h2>
-            <p style={{ marginBottom: '16px', color: 'black' }}>
-              We shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of our website.
+            <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>User Responsibilities</h2>
+            <p className='text-black'>
+              Users are expected to use our services responsibly and not engage in any activities that may harm our website or other users.
             </p>
-            <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Governing Law</h2>
-            <p style={{ color: 'black' }}>
-              These terms and conditions are governed by and construed in accordance with the laws of the jurisdiction in which we operate.
+            <h2 style={{ fontSize: '1.25rem', color: 'black', fontWeight: '600', marginBottom: '8px' }}>Changes to Terms</h2>
+            <p className='text-black'>
+              We may update our terms and conditions from time to time. Changes will be communicated through our website.
             </p>
           </>
         }
