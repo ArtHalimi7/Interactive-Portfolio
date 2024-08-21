@@ -1,16 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../assets/a.png';
 
 const Navbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
 
+  const handleLinkClick = () => {
+    console.log("Link clicked");
+    setSidebarOpen(false); // Close sidebar when a link is clicked
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="absolute top-0 w-full bg-transparent z-20">
-      <div className="bg-black shadow" style={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}>
+    <div className={`fixed top-0 w-full z-20 ${isScrolled ? 'bg-black' : ''}`}>
+      <div className="bg-transparent shadow">
         <div className="container mx-auto">
           <div className="flex justify-between items-center py-4 px-2">
             <div className="flex-shrink-0">
@@ -51,17 +70,17 @@ const Navbar = () => {
             </button>
             {/* Navbar Links */}
             <div className="hidden md:flex space-x-4">
-              <a href="/" className="text-xl font-bold hover:text-blue-950" style={{color: '#9ed0e6'}}>
+              <a href="#home" className="text-xl font-bold hover:text-blue-950" style={{color: '#9ed0e6'}} onClick={handleLinkClick}>
                 Home
               </a>
-              <a href="/services" className="text-xl font-bold hover:text-blue-950" style={{color: '#9ed0e6'}}>
-                Gallery
+              <a href="#about" className="text-xl font-bold hover:text-blue-950" style={{color: '#9ed0e6'}} onClick={handleLinkClick}>
+                About
               </a>
-              <a href="/contact" className="text-xl font-bold hover:text-blue-950" style={{color: '#9ed0e6'}}>
+              <a href="#projects" className="text-xl font-bold hover:text-blue-950" style={{color: '#9ed0e6'}} onClick={handleLinkClick}>
+                Projects
+              </a>
+              <a href="#contact" className="text-xl font-bold hover:text-blue-950" style={{color: '#9ed0e6'}} onClick={handleLinkClick}>
                 Contact
-              </a>
-              <a href="/about" className="text-xl font-bold hover:text-blue-950" style={{color: '#9ed0e6'}}>
-                About Us
               </a>
             </div>
           </div>
@@ -77,28 +96,28 @@ const Navbar = () => {
             <div className="p-4">
               <ul className="mt-2 divide-y divide-white">
                 <li className="py-2">
-                  <a href="/" className="block text-xl hover:text-blue-950 transition-all duration-300 ease-in-out">
+                  <a href="#home" className="block text-xl hover:text-blue-950 transition-all duration-300 ease-in-out" onClick={handleLinkClick}>
                     <span className="relative">
                       Home
                     </span>
                   </a>
                 </li>
                 <li className="py-2">
-                  <a href="/about" className="block text-xl hover:text-blue-950 transition-all duration-300 ease-in-out">
+                  <a href="#about" className="block text-xl hover:text-blue-950 transition-all duration-300 ease-in-out" onClick={handleLinkClick}>
                     <span className="relative">
                       About
                     </span>
                   </a>
                 </li>
                 <li className="py-2">
-                  <a href="/services" className="block text-xl hover:text-blue-950 transition-all duration-300 ease-in-out">
+                  <a href="#projects" className="block text-xl hover:text-blue-950 transition-all duration-300 ease-in-out" onClick={handleLinkClick}>
                     <span className="relative">
-                      Services
+                      Projects
                     </span>
                   </a>
                 </li>
                 <li className="py-2">
-                  <a href="/contact" className="block text-xl hover:text-blue-950 transition-all duration-300 ease-in-out">
+                  <a href="#contact" className="block text-xl hover:text-blue-950 transition-all duration-300 ease-in-out" onClick={handleLinkClick}>
                     <span className="relative">
                       Contact
                     </span>

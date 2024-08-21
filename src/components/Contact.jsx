@@ -1,10 +1,14 @@
-import { useState, useRef } from "react";
+import React, { useState, useRef, Suspense } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import { Html } from '@react-three/drei';
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import StarsCanvas from "../components/canvas/Stars";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import NeptuneObject from '../components/canvas/Neptune'; // Renamed import
 
 const Contact = () => {
   const formRef = useRef();
@@ -45,16 +49,16 @@ const Contact = () => {
     setLoading(true);
 
     emailjs.send(
-      'service_edxi3zr',
-      'template_ne9wh4b',
+      'service_z6586v8',
+      'template_uv3ugkm',
       {
         from_name: form.name,
         to_name: 'Art',
         from_email: form.email,
-        to_email: 'arthalimi989@gmail.com',
+        to_email: 'ah56066@ubt-uni.net',
         message: form.message,
       },
-      '-NWp731-hJ2KBhmcB'
+      'wHsamkgXBh4ubAuf5'
     ).then(() => {
       setLoading(false);
       setResponseMessage('Thank you for your message, I will get back to you as soon as possible.');
@@ -73,7 +77,7 @@ const Contact = () => {
   return (
     <div className="relative w-full h-full">
       <StarsCanvas />
-      <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden relative z-10">
+      <div className="xl:mt-12 xl:flex-row flex-col flex gap-10 overflow-hidden relative z-10">
         <motion.div
           variants={slideIn('left', "tween", 0.2, 1)}
           className="flex-[0.75] bg-transparent backdrop-blur-md p-8 rounded-2xl border border-white"
@@ -140,8 +144,17 @@ const Contact = () => {
 
         <motion.div
           variants={slideIn('right', "tween", 0.2, 1)}
-          className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px] z-20"
-        />
+          className="flex-1 h-[350px] mt-[170px] md:h-[550px] relative z-20"
+          style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} // Align center horizontally and vertically
+        >
+          <Canvas className="w-full h-full">
+            <ambientLight intensity={3}/> {/* Increase ambient light intensity */}
+            <OrbitControls enableZoom={false}/>
+            <Suspense fallback={<Html>Loading...</Html>}>
+              <NeptuneObject /> {/* Updated component name */}
+            </Suspense>
+          </Canvas>
+        </motion.div>
       </div>
       
     </div>
